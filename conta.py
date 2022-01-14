@@ -19,3 +19,19 @@ class Conta:
   def transferencia(self, valor, destino):
     self.saque(valor)
     destino.deposito(valor)
+
+  @property   # sintaxe para getter
+  def saldo(self):
+    return self.__saldo
+
+  @property   # sintaxe para getter
+  def titular(self):
+    return self.__titular.title()
+
+  @property   # sintaxe para getter
+  def limite(self):
+    return self.__limite
+
+  @limite.setter  # sintaxe para setter
+  def limite(self, limite):
+    self.__limite = limite
