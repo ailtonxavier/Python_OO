@@ -13,8 +13,15 @@ class Conta:
   def deposito(self, valor):
     self.__saldo += valor
 
+  def __pode_sacar(self, valor_do_saque):
+    # verifica se o valor do saque é menor ou igual ao saldo mais o limite.
+    return valor_do_saque <= self.__saldo + self.__limite
+
   def saque(self, valor):
-    self.__saldo -= valor
+    if self.__pode_sacar(valor):
+      self.__saldo -= valor
+    else:
+      print("Você não tem limite suficiente.")
 
   def transferencia(self, valor, destino):
     self.saque(valor)
@@ -35,3 +42,11 @@ class Conta:
   @limite.setter  # sintaxe para setter
   def limite(self, limite):
     self.__limite = limite
+
+  @staticmethod
+  def codigo_banco():
+    return "001"
+
+  @staticmethod
+  def codigos_bancos():
+    return {"BB":"001", "Caixa":"104", "Bradesco":"237"}
